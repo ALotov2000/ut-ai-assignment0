@@ -16561,7 +16561,7 @@ Name: housing, dtype: int64</pre>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>956.3408674526546 : processed in 0.001045
+<pre>956.3408674526546 : processed in 0.000999
 </pre>
 </div>
 </div>
@@ -16630,7 +16630,7 @@ Name: housing, dtype: int64</pre>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>956.3408674526528 : processed in 0.147044
+<pre>956.3408674526528 : processed in 0.164999
 </pre>
 </div>
 </div>
@@ -17102,7 +17102,7 @@ class="
 <p class='persian align-right'>
   در مرحله ی بعد برای بهبود دادن داده ها برای استفاده های آماری، داده های 
   numerical 
-  نرمال سازی شده اند. نرمال سازی با کم کردن میانگین از داده های هر ستون و سپس تقسیم مقدار حاصل بر انحراف معیار، امکان پذیر است.
+  استاندارد سازی شده اند. استاندارد سازی با کم کردن میانگین از داده های هر ستون و سپس تقسیم مقدار حاصل بر انحراف معیار، امکان پذیر است.
 </p>
 </div>
 </div>
@@ -17116,17 +17116,17 @@ class="
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">numericalColumns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;balance&#39;</span><span class="p">,</span> <span class="s1">&#39;duration&#39;</span><span class="p">,</span> <span class="s1">&#39;pdays&#39;</span><span class="p">]</span>
-<span class="n">normalizedData</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">numericalColumns</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]])</span>
+<span class="n">standardizedData</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">numericalColumns</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]])</span>
 
 <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numericalColumns</span><span class="p">:</span>
   <span class="k">if</span> <span class="n">col</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
     <span class="k">continue</span>
   
-  <span class="n">m</span> <span class="o">=</span> <span class="n">normalizedData</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-  <span class="n">s</span> <span class="o">=</span> <span class="n">normalizedData</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-  <span class="n">normalizedData</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">((</span><span class="n">normalizedData</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span><span class="p">)</span>
+  <span class="n">m</span> <span class="o">=</span> <span class="n">standardizedData</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="n">standardizedData</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+  <span class="n">standardizedData</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">((</span><span class="n">standardizedData</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span><span class="p">)</span>
   
-<span class="n">normalizedData</span>
+<span class="n">standardizedData</span>
 </pre></div>
 
      </div>
@@ -17307,7 +17307,7 @@ class="
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">normalizedData</span><span class="p">:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">standardizedData</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">col</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
         <span class="k">continue</span>
     
@@ -17317,24 +17317,24 @@ class="
     <span class="p">)</span>
     <span class="n">plot</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;normal distribution pdf of &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">col</span><span class="p">))</span>
     
-    <span class="n">xlimMin</span> <span class="o">=</span> <span class="n">normalizedData</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-    <span class="n">xlimMax</span> <span class="o">=</span> <span class="n">normalizedData</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">xlimMin</span> <span class="o">=</span> <span class="n">standardizedData</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">xlimMax</span> <span class="o">=</span> <span class="n">standardizedData</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 
     <span class="n">plot</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">xlimMin</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xlimMax</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">xlimMax</span> <span class="o">-</span> <span class="n">xlimMin</span><span class="p">)</span> <span class="o">/</span> <span class="mi">20</span><span class="p">))</span>
     <span class="n">plot</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
     <span class="n">plot</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;probability density function&#39;</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">normalizedData</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">normalizedData</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">standardizedData</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">standardizedData</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>
 
-    <span class="n">m1</span> <span class="o">=</span> <span class="n">normalizedData</span><span class="p">[</span><span class="n">normalizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-    <span class="n">s1</span> <span class="o">=</span> <span class="n">normalizedData</span><span class="p">[</span><span class="n">normalizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="n">m1</span> <span class="o">=</span> <span class="n">standardizedData</span><span class="p">[</span><span class="n">standardizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">standardizedData</span><span class="p">[</span><span class="n">standardizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
     <span class="n">plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
             <span class="n">x</span><span class="p">,</span>
             <span class="n">stat</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">m1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">s1</span><span class="p">),</span>
             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
             <span class="p">)</span>
 
-    <span class="n">m0</span> <span class="o">=</span> <span class="n">normalizedData</span><span class="p">[</span><span class="n">normalizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-    <span class="n">s0</span> <span class="o">=</span> <span class="n">normalizedData</span><span class="p">[</span><span class="n">normalizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="n">m0</span> <span class="o">=</span> <span class="n">standardizedData</span><span class="p">[</span><span class="n">standardizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">s0</span> <span class="o">=</span> <span class="n">standardizedData</span><span class="p">[</span><span class="n">standardizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
     <span class="n">plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
             <span class="n">x</span><span class="p">,</span>
             <span class="n">stat</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">m0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">s0</span><span class="p">),</span>
@@ -17344,9 +17344,9 @@ class="
     
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;score of attribute &quot;</span><span class="si">{}</span><span class="s1">&quot; is </span><span class="si">{}</span><span class="s1">&#39;</span>
             <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> 
-                    <span class="nb">len</span><span class="p">(</span><span class="n">normalizedData</span><span class="p">[</span><span class="n">normalizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> 
-                            <span class="p">(</span><span class="n">stat</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">normalizedData</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="n">m1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">s1</span><span class="p">)</span> <span class="o">&gt;</span> 
-                                    <span class="n">stat</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">normalizedData</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="n">m0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">s0</span><span class="p">))])))</span>
+                    <span class="nb">len</span><span class="p">(</span><span class="n">standardizedData</span><span class="p">[</span><span class="n">standardizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> 
+                            <span class="p">(</span><span class="n">stat</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">standardizedData</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="n">m1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">s1</span><span class="p">)</span> <span class="o">&gt;</span> 
+                                    <span class="n">stat</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">standardizedData</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="n">m0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">s0</span><span class="p">))])))</span>
 </pre></div>
 
      </div>
@@ -17510,13 +17510,13 @@ class="
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">chosen_col</span> <span class="o">=</span> <span class="s1">&#39;duration&#39;</span>
 
-<span class="n">m1</span> <span class="o">=</span> <span class="n">normalizedData</span><span class="p">[</span><span class="n">normalizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="n">chosen_col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">s1</span> <span class="o">=</span> <span class="n">normalizedData</span><span class="p">[</span><span class="n">normalizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="n">chosen_col</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="n">standardizedData</span><span class="p">[</span><span class="n">standardizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="n">chosen_col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">standardizedData</span><span class="p">[</span><span class="n">standardizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="n">chosen_col</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 
-<span class="n">m0</span> <span class="o">=</span> <span class="n">normalizedData</span><span class="p">[</span><span class="n">normalizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="n">chosen_col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">s0</span> <span class="o">=</span> <span class="n">normalizedData</span><span class="p">[</span><span class="n">normalizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="n">chosen_col</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">m0</span> <span class="o">=</span> <span class="n">standardizedData</span><span class="p">[</span><span class="n">standardizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="n">chosen_col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">s0</span> <span class="o">=</span> <span class="n">standardizedData</span><span class="p">[</span><span class="n">standardizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="n">chosen_col</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 
-<span class="n">target</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">normalizedData</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">normalizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])][</span><span class="n">chosen_col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">stat</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">m1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">s1</span><span class="p">)</span> <span class="o">&gt;</span> 
+<span class="n">target</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">standardizedData</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">standardizedData</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])][</span><span class="n">chosen_col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">stat</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">m1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">s1</span><span class="p">)</span> <span class="o">&gt;</span> 
                           <span class="n">stat</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">m0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">s0</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">))</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
@@ -17650,7 +17650,7 @@ class="
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p class='persian align-right'>
-  به طور خلاصه کاری که انجام شد ابتدا پر کردن خانه های خالی ستون های غیر هدف با روش های ساده ی میانگین و پرتکرار ترین مقدار بود. سپس داده های عددی  نرمال سازی شدند که تحلیل آماری آن ها ساده تر و منطقی تر جلو رود. سپس با استفاده از تابع 
+  به طور خلاصه کاری که انجام شد ابتدا پر کردن خانه های خالی ستون های غیر هدف با روش های ساده ی میانگین و پرتکرار ترین مقدار بود. سپس داده های عددی  استاندارد سازی شدند که تحلیل آماری آن ها ساده تر و منطقی تر جلو رود. سپس با استفاده از تابع 
   pdf 
   توزیع نرمال هر ستون عددی برای هر دو مقدار ممکن ستون هدف، امکان مقایسه ی ستون ها بر اساس میزان تاثیرگذاری آن ها بر ستون هدف برقرار شد. سپس با استفاده از ستونی که بالا ترین امتیاز را گرفت، مقدار ستون هدف سطر های هدف پر شد. 
 </p>
